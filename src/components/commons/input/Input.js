@@ -2,16 +2,16 @@ import React from 'react';
 
 const Input = (props) => (
   <div className="input">
-    <label for={props.name} className="input__label">{props.title}</label>
+    <label htmlFor={props.name} className="field__label">{props.title}</label>
     <input
       className="input__control"
       id={props.name}
       name={props.name}
-      type={props.inputType}
+      type={props.type}
+      title={props.title}
       value={props.value}
-      onChange={props.handleChange}
-      placeholder={props.placeholder}
-      {...props} />
+      onChange={props.onChange}
+      placeholder={props.placeholder}/>
   </div>
 )
 

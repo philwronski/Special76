@@ -21,3 +21,9 @@ export const saveCard = async (card) => {
 
   return card;
 }
+
+export const deleteCard = async (id) => {
+  let stateCards = JSON.parse(localStorage.getItem('cards'))
+  stateCards.items = stateCards.items.filter(card => card.id !== id)
+  localStorage.setItem('cards', JSON.stringify(stateCards))
+}

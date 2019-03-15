@@ -1,5 +1,5 @@
 import { createAction } from './utils'
-import { getCards, saveCard as _saveCard } from 'src/api/cards'
+import { getCards, saveCard as _saveCard, deleteCard as _deleteCard } from 'src/api/cards'
 import { findCards, isLoadingCard } from 'src/selectors/cards'
 import { uuidv4 } from 'src/utils'
 
@@ -49,6 +49,13 @@ export const saveCard = (card, refresh) => async (dispatch) => {
     dispatch(fetchCards())
   }
 }
+
+// export const deleteCard = (cardId, refresh) => async (dispatch) => {
+//   await _deleteCard(card)
+//   if(refresh) {
+//     dispatch(fetchCards())
+//   }
+// }
 
 export const addCard = createAction(actionsTypes.ADD_CARD, 'card')
 export const filterCard = createAction(actionsTypes.FILTER_CARD, 'filter')

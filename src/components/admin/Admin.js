@@ -1,11 +1,11 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import {Cards} from './cards'
+import {FilteredCardGrid} from 'src/containers/cards'
 
 const Admin = ({}) => (
   <div>
     <h2>Admin</h2>
-    <Route exact path="/admin/cards" component={Cards} />
+    <Route exact path="/admin/cards" component={FilteredCardGrid} />
   </div>
 )
 

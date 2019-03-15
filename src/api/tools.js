@@ -10,10 +10,11 @@ export const saveTool = async (tool) => {
   const stateTools = JSON.parse(localStorage.getItem('tools'))
   if(stateTools) {
     stateTools.items = [...stateTools.items, tool]
-    localStorage.setItem('tools', JSON.stringify(stateTools))
   } else {
-    throw new Error('saveTool - not working')
+    stateTools.items = [tool]
   }
+
+  localStorage.setItem('tools', JSON.stringify(stateTools))
 
   return tool;
 }

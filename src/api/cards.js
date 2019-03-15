@@ -7,13 +7,17 @@ export const getCards = async () => {
 }
 
 export const saveCard = async (card) => {
-  const stateCards = JSON.parse(localStorage.getItem('cards'))
+  let stateCards = JSON.parse(localStorage.getItem('cards'))
+  console.log(stateCards)
   if(stateCards) {
     stateCards.items = [...stateCards.items, card]
-    localStorage.setItem('cards', JSON.stringify(stateCards))
   } else {
-    throw new Error('saveCard - not working')
+    stateCards = {
+      items: [card]
+    }
   }
+
+  localStorage.setItem('cards', JSON.stringify(stateCards))
 
   return card;
 }

@@ -3,6 +3,7 @@ import {Input, TextArea, Button, Select} from 'src/components/commons'
 import { connect } from 'react-redux'
 import {SELECTABLE_SPECIALS} from 'src/constants/specials'
 import {RARITY} from 'src/constants/rarity'
+import {saveCard} from 'src/actions/cards';
 
 const DEFAULT_CARD = {
   special: "",
@@ -49,10 +50,13 @@ class CardAdd extends Component {
 
   handleFormSubmit(e) {
     e.preventDefault()
+
+    const {saveCard} = this.props
     // if (!title.value.trim() || !description.value.trim()) {
     //   return
     // }
     console.log(this.state)
+    saveCard(this.state)
     // dispatch(saveTool({title: title.value, description: description.value}, false))
   }
 
@@ -115,4 +119,9 @@ class CardAdd extends Component {
   }
 }
 
-export default connect()(CardAdd)
+
+const mapDispatchToProps = {
+  saveCard
+}
+
+export default connect(null, mapDispatchToProps)(CardAdd)

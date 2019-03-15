@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addTool, saveTool } from 'src/actions/tools'
 
-const AddTool = ({ dispatch }) => {
+const AddTool = ({ saveTool }) => {
   let title
   let description
 
@@ -11,7 +11,7 @@ const AddTool = ({ dispatch }) => {
     if (!title.value.trim() || !description.value.trim()) {
       return
     }
-    dispatch(saveTool({title: title.value, description: description.value}, false))
+    saveTool({title: title.value, description: description.value}, false)
     title.value = ''
     description.value = ''
   }
@@ -26,4 +26,8 @@ const AddTool = ({ dispatch }) => {
   )
 }
 
-export default connect()(AddTool)
+const mapDispatchToProps = dispatch => ({
+  saveTool: (tool) => dispatch(saveTool(tool))
+});
+
+export default connect(mapDispatchToProps)(AddTool)
